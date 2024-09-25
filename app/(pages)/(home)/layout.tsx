@@ -2,7 +2,14 @@ import React from 'react'
 import { montserrat300 } from '@/app/fonts/montserrat';
 import Navbar from '@/components/Navbar/Navbar';
 import Sidebar from '@/components/Sidebar/Sidebar';
-
+import { Metadata } from 'next';
+export const metadata: Metadata = {
+    title: "Doorbin",
+    description: "Streamlined Video Conferencing",
+    icons: {
+        icon: "../Asset/doorbin-favicon-black.png"
+    }
+};
 export default function HomeLayout({
     children,
 }: Readonly<{

@@ -5,8 +5,9 @@ import {
     DialogContent,
     DialogDescription,
     DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog"
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import { cn } from '@/lib/utils'
 import { Button } from '../ui/button'
 
@@ -18,11 +19,10 @@ type Props = {
     className?: string,
     handleClick?: () => void,
     buttonText?: string,
-    image?: "string",
+    image?: StaticImageData,
     children?: ReactNode,
     ButtonIcon?: React.ForwardRefExoticComponent<Omit<LucideProps, "ref"> & React.RefAttributes<SVGSVGElement>>,
     description?: string
-
 }
 
 export default function MeetingModal({ title, isOpen, onClose, className, handleClick, buttonText, ButtonIcon, image, children, description }: Props) {
@@ -36,10 +36,11 @@ export default function MeetingModal({ title, isOpen, onClose, className, handle
                             <Image src={image} alt="Modal image" width={72} height={72} />
                         </div>
                     }
-
-                    <h1 className={cn("text-3xl font-bold leading-[42px]")}>{title}</h1>
+                    <DialogTitle className={cn("text-3xl font-bold leading-[42px]")}>
+                        {title}
+                    </DialogTitle>
                     {children}
-                    <Button className='bg-blue-1 focus-visible:ring-0 focus-visible:ring-offset-0 flex gap-x-2' onClick={handleClick}>
+                    <Button className='bg-blue-2 transition-colors hover:bg-blue-1 focus-visible:ring-0 focus-visible:ring-offset-0 flex gap-x-2' onClick={handleClick}>
                         {ButtonIcon && <ButtonIcon size={12} />}
                         {buttonText || "Schedule Meeting"}
                     </Button>
