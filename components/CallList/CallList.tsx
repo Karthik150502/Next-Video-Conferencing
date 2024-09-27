@@ -70,7 +70,7 @@ export default function CallList({ type }: { type: CallListEnum }) {
         if (type === CallListEnum.RECORDINGS) {
             fetchRecordings();
         }
-    }, [type, callRecordings])
+    }, [type, callRecordings, toast])
 
 
     const calls = getCalls();

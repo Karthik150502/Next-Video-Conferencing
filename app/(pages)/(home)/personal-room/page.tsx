@@ -58,7 +58,7 @@ export default function PersonalRoom() {
             title: "Copied meeting link",
             variant: "success"
         }).id;
-        let timer = setTimeout(() => {
+        const timer = setTimeout(() => {
             setCopied(false)
             toast.dismiss(toastId)
         }, 2000)
