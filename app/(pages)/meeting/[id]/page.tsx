@@ -12,12 +12,12 @@ import FullScreenLoading from '@/components/loader/loading';
 
 export default function MeetingPage({ params: { id } }: { params: { id: string } }) {
 
-    const { user, isLoaded } = useUser();
+    const { isLoaded } = useUser();
     const [isSetupComplete, setisSetupComplete] = useState<boolean>(false)
 
     const { call, isCallLoading } = useGetCallById(id);
 
-    
+
 
 
     if (!isLoaded || isCallLoading) return <FullScreenLoading status="Loading, please wait..." />

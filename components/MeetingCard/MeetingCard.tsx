@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 // import { avatarImages } from "@/constants";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -38,7 +36,7 @@ const MeetingCard = ({
                 <Icon size={28} strokeWidth={1} />
                 <div className="flex justify-between">
                     <div className="flex flex-col gap-2">
-                        <h1 className="text-2xl font-bold text-ellipsis whitespace-nowrap overflow-hidden">{title}</h1>
+                        <h1 className="text-xl text-wrap font-bold text-ellipsis overflow-hidden truncate">{title}</h1>
                         <p className="text-base font-normal">{date}</p>
                     </div>
                 </div>

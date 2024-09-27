@@ -23,6 +23,7 @@ export default function PersonalRoom() {
 
     const { user } = useUser();
     const [copied, setCopied] = useState<boolean>(false)
+    const [copiedTimer, setCopiedTimer] = useState<NodeJS.Timeout | undefined>()
     const toast = useToast();
     const meetingId = user?.id
     const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`
@@ -50,18 +51,18 @@ export default function PersonalRoom() {
     }
 
     const copyLink = () => {
-        let timer;
-        clearTimeout(timer)
+        clearTimeout(copiedTimer)
         navigator.clipboard.writeText(meetingLink)
         setCopied(true)
         const toastId = toast.toast({
             title: "Copied meeting link",
             variant: "success"
         }).id;
-        timer = setTimeout(() => {
+        let timer = setTimeout(() => {
             setCopied(false)
             toast.dismiss(toastId)
         }, 2000)
+        setCopiedTimer(timer)
     }
 
 

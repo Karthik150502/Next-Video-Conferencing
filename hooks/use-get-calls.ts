@@ -34,7 +34,7 @@ export const useGetCalls = () => {
 
                 setCalls(calls)
             } catch (e) {
-
+                console.error(e)
             } finally {
                 setIsLoading(false)
             }
@@ -49,14 +49,14 @@ export const useGetCalls = () => {
     const endedCalls = calls.filter(({ state: { startsAt, endedAt } }: Call) => {
         return (startsAt && new Date(startsAt) < now || !!endedAt)
     });
-    const upcomingCalls = calls.filter(({ state: { startsAt, endedAt } }: Call) => {
+    const upcomingCalls = calls.filter(({ state: { startsAt } }: Call) => {
         return startsAt && new Date(startsAt) > now
     });
 
     return {
         endedCalls,
         upcomingCalls,
-        recordings: calls,
+        callRecordings: calls,
         isLoading: isLoading
     }
 
